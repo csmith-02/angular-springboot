@@ -1,0 +1,15 @@
+<main class="container d-flex align-items-center justify-content-center" style="height: 90vh;">
+    <p *ngIf="errorMessage && !task; else showTask" class="fw-bold fs-1">
+        {{ errorMessage }}
+    </p>
+</main>
+
+<ng-template #showTask>
+    <form [formGroup]="formGroup" class="container w-100" (ngSubmit)="onSubmit()">
+        <label class="form-label fw-bold">Update Task</label>
+        <div class="d-flex">
+            <input formControlName="description" class="form-control" />
+            <button class="btn btn-primary" type="submit">Update</button>
+        </div>
+    </form>
+</ng-template>

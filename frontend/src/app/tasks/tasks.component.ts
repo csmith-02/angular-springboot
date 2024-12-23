@@ -35,11 +35,14 @@ export class TasksComponent implements OnInit {
 
     this.service.addTask(task).subscribe({
       complete: ()=>{
+        console.log('in complete')
         this.service.getTasks().subscribe({
           next: (res) => {
             this.tasks = res
+          },
+          complete: () => {
             this.formGroup.reset();
-          }
+          },
         });
       }
     })
